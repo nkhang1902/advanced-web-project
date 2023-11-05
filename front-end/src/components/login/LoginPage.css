@@ -1,0 +1,22 @@
+.login-form {
+    /*height: 50%;*/
+    width: 30%;
+    justify-content: center
+}
+
+.login-form-container {
+    justify-content: center;
+    background-color: aliceblue;
+    padding: 1rem
+}
+
+.welcome-text {
+    color: royalblue;
+    font-size: 3rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.content-image {
+    width: 50%;
+    padding-left: 50px
+}
