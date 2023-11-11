@@ -1,8 +1,10 @@
+import {AppLayout} from "./components/app-layout/AppLayout";
 import {LoginPage} from "./components/login/LoginPage";
 
 function App() {
     return (
-        <LoginPage/>
+        <AppLayout/>
+        // <LoginPage/>
     );}
 
 export default App;

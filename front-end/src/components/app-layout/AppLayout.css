@@ -1,0 +1,35 @@
+.header{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    max-width: 100%;
+    background: #ffffff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+    backdrop-filter: blur(8px);
+}
+
+.logo-header-text{
+    font-weight: bold;
+    color: royalblue;
+    font-size: 2rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.search {
+    padding-inline-start: 10px;
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none;
+    transition: all .3s;
+    border: none;
+    color: grey;
+}
+
+.search::placeholder{
+    color: darkgrey;
+}
+
+.search-container {
+    width: 280px;
+    padding: 0;
+}
