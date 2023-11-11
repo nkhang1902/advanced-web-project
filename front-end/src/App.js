@@ -3,7 +3,9 @@ import {LoginPage} from "./components/login/LoginPage";
 
 function App() {
     return (
-        <AppLayout/>
+        <AppLayout>
+            home page
+        </AppLayout>
         // <LoginPage/>
     );}
 

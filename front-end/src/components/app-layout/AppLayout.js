@@ -8,7 +8,7 @@ import {EditOutlined, LogoutOutlined, SearchOutlined, UserOutlined} from "@ant-d
 import {MenuProps} from "antd";
 
 
-export function AppLayout() {
+export function AppLayout({children}) {
     const items: MenuProps['items'] = [
         {
             key: '1',
@@ -44,7 +44,9 @@ export function AppLayout() {
                 </div>
             </Row>
         </Header>
-        <Content style={{backgroundColor: 'white'}}></Content>
+        <Content style={{backgroundColor: 'white'}}>
+            {children}
+        </Content>
         <Footer>
             <center><p style={{
                 color: "silver",
