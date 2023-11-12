@@ -23,7 +23,7 @@ function SignUpPage() {
                     </div>
 
                     <div class="flex items-center justify-between mt-8">
-                        <button type="submit" class="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">Register</button>
+                        <button type="submit" class="flex items-center justify-center px-2 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">Register</button>
                         <Link to="/login" class="font-semibold">
                             Already registered?
                         </Link>
