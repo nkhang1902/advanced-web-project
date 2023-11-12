@@ -1,10 +1,13 @@
 import {AppLayout} from "./components/app-layout/AppLayout";
 import {LoginPage} from "./components/login/LoginPage";
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
     return (
         <AppLayout>
-            home page
+            <Routes>
+                <Route path="/login" element={<LoginPage />}/>
+            </Routes>
         </AppLayout>
         // <LoginPage/>
     );}
