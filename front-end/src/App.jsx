@@ -4,11 +4,13 @@ import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
     return (
+        <Router>
         <AppLayout>
             <Routes>
                 <Route path="/login" element={<LoginPage />}/>
             </Routes>
         </AppLayout>
+        </Router>
         // <LoginPage/>
     );}
 
