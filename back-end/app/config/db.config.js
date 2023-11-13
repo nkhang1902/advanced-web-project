@@ -1,8 +1,9 @@
 module.exports = {
-  HOST: "localhost",
+  HOST: "viaduct.proxy.rlwy.net",
   USER: "root",
-  PASSWORD: "123456",
-  DB: "testdb",
+  PASSWORD: "bA6BB2AgB56CdAGC5dH--Fdg3gAH45Ah",
+  DB: "railway",
+  port: '59998',
   dialect: "mysql",
   pool: {
     max: 5,
