@@ -1,14 +1,30 @@
-import {Avatar, Card, Divider, Dropdown, Layout, Row, Space} from "antd";
+import {Avatar, Divider, Dropdown, Layout, MenuProps, Row, Space} from "antd";
 import {Footer, Header} from "antd/lib/layout/layout";
 import React from "react";
 import {Content} from "antd/es/layout/layout";
 import './AppLayout.css'
-import Search from "antd/lib/input/Search";
 import {EditOutlined, LogoutOutlined, SearchOutlined, UserOutlined} from "@ant-design/icons";
-import {MenuProps} from "antd";
+import {useNavigate} from "react-router-dom";
+import axios from "axios";
 
 
 export function AppLayout({children}) {
+    const navigate = useNavigate();
+
+    const handleLogout = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await axios.post('http://localhost:8080/api/auth/logout', {});
+            console.log('Log out successfully', response.data);
+            navigate("/login")
+            // Add any additional logic or redirection after successful logout
+        } catch (error) {
+            console.error('Error logging in', error.response.data);
+            // Handle errors, display messages, etc.
+        }
+    };
+
     const items: MenuProps['items'] = [
         {
             key: '1',
@@ -21,7 +37,7 @@ export function AppLayout({children}) {
         {
             key: '2',
             label: (
-                <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com" style={{color: 'red'}}>
+                <a target="_blank" rel="noopener noreferrer" onClick={handleLogout} style={{color: 'red'}}>
                     <LogoutOutlined/> Logout
                 </a>
             ),
