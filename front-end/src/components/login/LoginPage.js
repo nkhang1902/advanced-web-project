@@ -3,11 +3,36 @@ import React from "react";
 import {Content} from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
 import './LoginPage.css'
-import {Footer} from "antd/lib/layout/layout";
 import {ArrowRightOutlined} from "@ant-design/icons";
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function LoginPage() {
+    const navigate = useNavigate();
 
+    const [formData, setFormData] = useState({
+        username: '',
+        password: ''
+      });
+    const handleLogIn = async (e) => {
+        e.preventDefault();
+    
+        // Make a POST request to the signup API
+        try {
+          const response = await axios.post('http://localhost:8080/api/auth/login', formData);
+          console.log('Log in successfully', response.data);
+          navigate("/")
+          // Add any additional logic or redirection after successful signup
+        } catch (error) {
+          console.error('Error logging in', error.response.data);
+          // Handle errors, display messages, etc.
+        }
+    };
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({ ...prevData, [name]: value }));
+    };
     const loginForm = <Form
         name="login"
         initialValues={{remember: true}}>
@@ -17,8 +42,11 @@ export function LoginPage() {
                 required: true, message: 'Please enter your username!',
             },]}>
             <Input
+                name="username"
                 placeholder="Username"
                 size={"large"}
+                onChange={handleInputChange}
+                value={formData.username}
             />
         </Form.Item>
         <Form.Item
@@ -27,9 +55,12 @@ export function LoginPage() {
                 required: true, message: 'Please enter your password!',
             },]}>
             <Input
+                name="password"
                 type="password"
                 placeholder="Password"
                 size={"large"}
+                onChange={handleInputChange}
+                value={formData.password}
             />
         </Form.Item>
         <Form.Item>
@@ -39,7 +70,7 @@ export function LoginPage() {
         </Form.Item>
         <center>
             <Form.Item>
-                <Button type="primary" htmlType="submit" className="login-form-button">
+                <Button onClick={handleLogIn} type="primary" htmlType="submit" className="login-form-button">
                     <ArrowRightOutlined style={{fontSize: 20}}/>
                 </Button>
             </Form.Item>
