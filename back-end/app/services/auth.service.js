@@ -13,6 +13,8 @@ exports.signup = async (req) => {
             password: bcrypt.hashSync(req.body.password, 8),
         });
 
+        await user.save();
+
         return user;
 
         // if (req.body.roles) {
@@ -37,6 +39,48 @@ exports.signup = async (req) => {
 };
 
 exports.login = async (req) => {
+    const user = await User.findOne({
+        where: {
+            username: req.body.username,
+        },
+    });
+
+    const passwordIsValid = bcrypt.compareSync(
+        req.body.password,
+        user.password
+    );
+
+    if (!passwordIsValid) {
+        return res.status(401).send({
+            message: "Invalid Password!",
+        });
+    }
+
+    const token = jwt.sign({id: user.id},
+        config.secret,
+        {
+            algorithm: 'HS256',
+            allowInsecureKeySizes: true,
+            expiresIn: 86400, // 24 hours
+        });
+
+    // let authorities = [];
+    // const roles = await user.getRoles();
+    // for (let i = 0; i < roles.length; i++) {
+    //     authorities.push("ROLE_" + roles[i].name.toUpperCase());
+    // }
+
+    req.session.token = token;
+
+    return {
+        id: user.id,
+        username: user.username,
+        email: user.email,
+        roles: [1],
+    };
+}
+
+exports.update = async (req) => {
     try {
         const user = await User.findOne({
             where: {
@@ -44,40 +88,15 @@ exports.login = async (req) => {
             },
         });
 
-        const passwordIsValid = bcrypt.compareSync(
-            req.body.password,
-            user.password
-        );
+        user.username = req.body.username;
+        user.email = req.body.email ?? user.email;
+        user.roles = req.body.roles ?? user.roles;
+        user.updatedAt = Date.now();
 
-        if (!passwordIsValid) {
-            return res.status(401).send({
-                message: "Invalid Password!",
-            });
-        }
+        await user.save();
 
-        const token = jwt.sign({id: user.id},
-            config.secret,
-            {
-                algorithm: 'HS256',
-                allowInsecureKeySizes: true,
-                expiresIn: 86400, // 24 hours
-            });
-
-        // let authorities = [];
-        // const roles = await user.getRoles();
-        // for (let i = 0; i < roles.length; i++) {
-        //     authorities.push("ROLE_" + roles[i].name.toUpperCase());
-        // }
-
-        req.session.token = token;
-
-        return {
-            id: user.id,
-            username: user.username,
-            email: user.email,
-            roles: [1],
-        };
+        return user;
     } catch (error) {
-        throw Error(error.message);
+        throw Error(error.message)
     }
 }

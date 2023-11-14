@@ -28,3 +28,12 @@ exports.logout = async (req, res) => {
     this.next(err);
   }
 };
+
+exports.updateProfile = async (req, res) =>{
+  try {
+    const user = await UserService.update(req);
+    return res.status(200).json({status: 200, data: user, message: "Updated User Successfully!"});
+  } catch (error) {
+    return res.status(500).send({message: error.message});
+  }
+}
