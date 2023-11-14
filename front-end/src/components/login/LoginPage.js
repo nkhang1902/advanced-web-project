@@ -70,7 +70,7 @@ export function LoginPage() {
         </Form.Item>
         <center>
             <Form.Item>
-                <Button onClick={handleLogIn} type="primary" htmlType="submit" className="login-form-button">
+                <Button onClick={handleLogIn} type="primary" htmlType="submit" className="login-form-button bg-royalblue">
                     <ArrowRightOutlined style={{fontSize: 20}}/>
                 </Button>
             </Form.Item>
@@ -98,7 +98,7 @@ export function LoginPage() {
                     <Button type={"link"} className={"secondary-button"}><b>COULD NOT
                         LOGIN?</b></Button>
                     <br/>
-                    <Button type={"link"} className={"secondary-button"}><b>CREATE A NEW
+                    <Button type={"link"} className={"secondary-button"} onClick={()=>navigate("/signup")}><b>CREATE A NEW
                         ACCOUNT</b></Button>
                     <p style={{
                         color: "silver",

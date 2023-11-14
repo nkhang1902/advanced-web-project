@@ -3,6 +3,9 @@ module.exports = {
   content: ["./src/**/*.{html,js,jsx}"],
   theme: {
     extend: {
+      colors:{
+        'royalblue': '#4169E1',
+      },
       fontFamily: {
         sans: [
           '-apple-system',

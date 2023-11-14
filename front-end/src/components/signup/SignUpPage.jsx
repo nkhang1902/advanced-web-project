@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import { useState } from 'react';
 import {Button, Checkbox, Flex,  Form, Input, Layout} from "antd";
@@ -9,6 +9,8 @@ import "../login/LoginPage.css"
 import {ArrowRightOutlined} from "@ant-design/icons";
 
 function SignUpPage() {
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         username: '',
         email: '',
@@ -107,18 +109,15 @@ function SignUpPage() {
                         </Form.Item>
                         <center>
                             <Form.Item>
-                                <Button onClick={handleSignUp} type="primary" htmlType="submit" className="login-form-button bg-blue-400">
+                                <Button onClick={handleSignUp} type="primary" htmlType="submit" className="login-form-button bg-royalblue">
                                     <ArrowRightOutlined style={{fontSize: 20}}/>
                                 </Button>
                             </Form.Item>
-                            <Link to="/login" class="font-semibold">
-                                Already registered?
-                            </Link>
                         </center>
-
                     </Form>
                 </div>
                 <center>
+                    <Button type={"link"} className={"secondary-button"} onClick={()=>navigate("/login")}><b>ALREADY REGISTERED?</b></Button>
                     <p style={{
                         color: "silver",
                         textTransform: "uppercase",
