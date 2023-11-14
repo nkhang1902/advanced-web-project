@@ -1,13 +1,36 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {Button, Checkbox, Col, Divider, Flex, FloatButton, Form, Input, Layout, Row, Space} from "antd";
+import axios from 'axios';
+import { useState } from 'react';
+import {Button, Checkbox, Flex,  Form, Input, Layout} from "antd";
 import {Content} from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
 import "../login/LoginPage.css"
-import {Footer} from "antd/lib/layout/layout";
 import {ArrowRightOutlined} from "@ant-design/icons";
 
 function SignUpPage() {
+    const [formData, setFormData] = useState({
+        username: '',
+        email: '',
+        password: ''
+      });
+    const handleSignUp = async (e) => {
+        e.preventDefault();
+    
+        // Make a POST request to the signup API
+        try {
+          const response = await axios.post('http://localhost:8080/api/auth/signup', formData);
+          console.log('Account created successfully:', response.data);
+          // Add any additional logic or redirection after successful signup
+        } catch (error) {
+          console.error('Error creating account:', error.response.data);
+          // Handle errors, display messages, etc.
+        }
+    };
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({ ...prevData, [name]: value }));
+    };
     return (<Layout style={{minHeight: '100vh'}}>
         <Layout style={{maxWidth: '66%',  minHeight:'100%'}}>
             <Content style={{position:'relative'}}>
@@ -31,8 +54,11 @@ function SignUpPage() {
                                 required: true, message: 'Please enter your username!',
                             },]}>
                             <Input
+                                name="username"
                                 placeholder="Username"
-                                size={"large"}
+                                size="large"
+                                onChange={handleInputChange}
+                                value={formData.username}
                             />
                         </Form.Item>
                         <Form.Item
@@ -41,9 +67,12 @@ function SignUpPage() {
                                 required: true, message: 'Please enter your email!',
                             },]}>
                             <Input
+                                name='email'
                                 type="email"
                                 placeholder="Email"
-                                size={"large"}
+                                size="large"
+                                onChange={handleInputChange}
+                                value={formData.email}
                             />
                         </Form.Item>
                         <Form.Item
@@ -52,9 +81,12 @@ function SignUpPage() {
                                 required: true, message: 'Please enter your password!',
                             },]}>
                             <Input
+                                name='password'
                                 type="password"
                                 placeholder="Password"
                                 size={"large"}
+                                onChange={handleInputChange}
+                                value={formData.password}
                             />
                         </Form.Item>
                         <Form.Item
@@ -75,7 +107,7 @@ function SignUpPage() {
                         </Form.Item>
                         <center>
                             <Form.Item>
-                                <Button type="primary" htmlType="submit" className="login-form-button bg-blue-400">
+                                <Button onClick={handleSignUp} type="primary" htmlType="submit" className="login-form-button bg-blue-400">
                                     <ArrowRightOutlined style={{fontSize: 20}}/>
                                 </Button>
                             </Form.Item>
