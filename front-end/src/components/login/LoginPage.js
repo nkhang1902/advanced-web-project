@@ -6,6 +6,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginPage.css";
+import {baseUrl} from "../../apis/api.config";
 function LoginPage() {
   const [error, setError] = useState("");
 
@@ -21,7 +22,7 @@ function LoginPage() {
     // Make a POST request to the signup API
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/auth/login",
+        baseUrl+ "api/auth/login",
         formData
       );
       console.log("Log in successfully", response.data);

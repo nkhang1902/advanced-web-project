@@ -6,6 +6,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../login/LoginPage.css";
+import {baseUrl} from "../../apis/api.config";
 
 function SignUpPage() {
   const navigate = useNavigate();
@@ -28,15 +29,15 @@ function SignUpPage() {
       setError("Password must be at least 6 characters long");
       return;
     }
-    if (formData.password !== formData.repassword) {
-      setError("Password and Confirm Password must be the same");
-      return;
-    }
+    // if (formData.password !== formData.repassword) {
+    //   setError("Password and Confirm Password must be the same");
+    //   return;
+    // }
 
     // Make a POST request to the signup API
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/auth/signup",
+         baseUrl + "api/auth/signup",
         formData
       );
       console.log("Account created successfully:", response.data);
@@ -143,6 +144,8 @@ function SignUpPage() {
                   type="password"
                   placeholder="Confirm Password"
                   size={"large"}
+                  onChange={handleInputChange}
+                  value={formData.repassword}
                   minLength={6}
                 />
               </Form.Item>

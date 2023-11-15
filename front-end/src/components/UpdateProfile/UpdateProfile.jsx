@@ -6,6 +6,7 @@ import { ArrowRightOutlined } from "@ant-design/icons";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {baseUrl} from "../../apis/api.config";
 
 const MOCK_DATA = {
   username: localStorage.getItem("username"),
@@ -35,7 +36,7 @@ const UpdateProfile = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/auth/update-profile",
+          baseUrl + "api/auth/update-profile",
         formData
       );
       localStorage.setItem("email", formData.email);

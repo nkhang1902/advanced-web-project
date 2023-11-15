@@ -11,6 +11,7 @@ import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./AppLayout.css";
+import {baseUrl} from "../../apis/api.config";
 
 export function AppLayout({ children }) {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ export function AppLayout({ children }) {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/auth/logout",
+          baseUrl + "api/auth/logout",
         {}
       );
       console.log("Log out successfully", response.data);
