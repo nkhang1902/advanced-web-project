@@ -1,11 +1,12 @@
-import { ArrowRightOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Flex, Form, Input, Layout } from "antd";
-import Sider from "antd/es/layout/Sider";
-import { Content } from "antd/es/layout/layout";
+import React from 'react';
+import {Link, useNavigate} from 'react-router-dom';
 import axios from 'axios';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import "../login/LoginPage.css";
+import { useState } from 'react';
+import {Button, Checkbox, Flex,  Form, Input, Layout} from "antd";
+import {Content} from "antd/es/layout/layout";
+import Sider from "antd/es/layout/Sider";
+import "../login/LoginPage.css"
+import {ArrowRightOutlined} from "@ant-design/icons";
 
 function SignUpPage() {
     const navigate = useNavigate();
@@ -42,7 +43,7 @@ function SignUpPage() {
                 <p className="welcome-text-2">Lorem Ipsum</p>
             </Content>
         </Layout>
-        <Sider width={'33%'} className="login-form-container">
+        <Sider width={'33%'} class="login-form-container">
             <Flex vertical justify={"space-between"} style={{minHeight: '100%', padding: '10% 10% 0'}}>
                 <div>
                     <center><h1 className="welcome-text">Register</h1></center>

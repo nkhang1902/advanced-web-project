@@ -117,7 +117,7 @@ export function LoginPage() {
           <p className="welcome-text-2">Welcome to AWP</p>
         </Content>
       </Layout>
-      <Sider width={"33%"} className="login-form-container">
+      <Sider width={"33%"} class="login-form-container">
         <Flex
           vertical
           justify={"space-between"}
