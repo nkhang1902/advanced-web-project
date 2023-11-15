@@ -4,7 +4,7 @@ import {
   SearchOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Avatar, Divider, Dropdown, Layout, Row, Space } from "antd";
+import { Avatar, Button, Divider, Dropdown, Layout, Row, Space } from "antd";
 import { Content } from "antd/es/layout/layout";
 import { Footer, Header } from "antd/lib/layout/layout";
 import axios from "axios";
@@ -37,8 +37,8 @@ export function AppLayout({ children }) {
     {
       key: "1",
       label: (
-        <a target="_blank" rel="noopener noreferrer" href="/edit-profile">
-          <EditOutlined></EditOutlined> Edit Profile
+        <a target="_blank" rel="noopener noreferrer" href="/update-profile">
+          <EditOutlined></EditOutlined> Update Profile
         </a>
       ),
     },
@@ -62,7 +62,9 @@ export function AppLayout({ children }) {
       <Header className={"header"} shadow>
         <Row style={{ minWidth: "100%" }} justify={"space-between"}>
           <Space size={"middle"}>
-            <div className={"logo-header-text"}>AWP</div>
+            <a href="/">
+              <div className={"logo-header-text"}>AWP</div>
+            </a>
             <Divider type={"vertical"} style={{ height: "40px" }} />
             <div className={"search-container"}>
               <SearchOutlined style={{ color: "grey" }} />

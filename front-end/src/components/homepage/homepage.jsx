@@ -11,32 +11,35 @@ function HomePage() {
   useEffect(() => {
     const isAuthenticated = localStorage.getItem("isAuthenticated");
 
-    if(isAuthenticated !== "1") {
-      navigate('/login');
+    if (isAuthenticated !== "1") {
+      navigate("/login");
     }
-  })
- 
-  const username = "hello";
+  });
+
+  const email = localStorage.getItem("email");
+  const username = localStorage.getItem("username");
 
   return (
     <AppLayout>
-        <center>
+      <center>
         <Card
-        style={{ width: 500 }}
-        cover={
-          <img
-            alt="example"
-            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-          />
-        }
-        actions={[<EditOutlined key="edit" />]}
-      >
-        <Meta title={`Username: ${username}`} />
-        <Meta title={`Email: ${username}`} />
-        <Meta title={`Role: ${username}`} />
-      </Card>
-        </center>
-    
+          style={{ width: 500 }}
+          cover={
+            <img
+              alt="example"
+              src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+            />
+          }
+          actions={[
+            <a href="/update-profile">
+              <EditOutlined key="edit" />
+            </a>,
+          ]}
+        >
+          <Meta title={`Username: ${username}`} />
+          <Meta title={`Email: ${email}`} />
+        </Card>
+      </center>
     </AppLayout>
   );
 }

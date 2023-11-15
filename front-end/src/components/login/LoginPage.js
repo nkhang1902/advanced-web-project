@@ -25,6 +25,9 @@ function LoginPage() {
       console.log("Log in successfully", response.data);
       navigate("/");
       localStorage.setItem("isAuthenticated", "1");
+      localStorage.setItem("username", response.data.username);
+      localStorage.setItem("email", response.data.email);
+
       // Add any additional logic or redirection after successful signup
     } catch (error) {
       console.error("Error logging in", error.response.data);
