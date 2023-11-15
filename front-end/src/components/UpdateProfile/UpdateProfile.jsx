@@ -8,9 +8,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const MOCK_DATA = {
-  username: "ducanh",
-  email: "ducanh123@gmail.com",
-  roles: "admin",
+  username: localStorage.getItem("username"),
+  email: localStorage.getItem("email"),
+  roles: localStorage.getItem("role"),
 };
 
 const UpdateProfile = () => {

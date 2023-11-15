@@ -14,6 +14,7 @@ import "./AppLayout.css";
 
 export function AppLayout({ children }) {
   const navigate = useNavigate();
+  const username = localStorage.getItem("username");
 
   const handleLogout = async (e) => {
     e.preventDefault();
@@ -72,6 +73,8 @@ export function AppLayout({ children }) {
             </div>
           </Space>
           <div>
+          {username && <span className="mr-2 font-bold">Hello {username}</span>}
+
             <Dropdown menu={{ items }} arrow placement="bottomRight">
               <Avatar size={"large"} icon={<UserOutlined />} />
             </Dropdown>
