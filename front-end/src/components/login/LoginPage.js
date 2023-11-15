@@ -7,6 +7,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 function LoginPage() {
+  const [error, setError] = useState("");
+
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -31,15 +33,18 @@ function LoginPage() {
       // Add any additional logic or redirection after successful signup
     } catch (error) {
       console.error("Error logging in", error.response.data);
+      setError("Username or password is incorrect");
       // Handle errors, display messages, etc.
     }
   };
   const handleInputChange = (e) => {
+    setError("");
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
   const loginForm = (
     <Form name="login" initialValues={{ remember: true }}>
+      <div style={{ color: "red" }}>{error}</div>
       <Form.Item
         name="username"
         rules={[
