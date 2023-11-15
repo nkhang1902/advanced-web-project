@@ -59,6 +59,7 @@ const UpdateProfile = () => {
   return (
     <AppLayout>
       <Form
+        className="w-2/5 mx-auto mt-4"
         name="updateProfile"
         initialValues={{ email: MOCK_DATA.email, roles: "user" }}
       >
