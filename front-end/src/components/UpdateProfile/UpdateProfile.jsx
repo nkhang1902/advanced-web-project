@@ -36,8 +36,9 @@ const UpdateProfile = () => {
     try {
       const response = await axios.post(
         "http://localhost:8080/api/auth/update-profile",
-        MOCK_DATA
+        formData
       );
+      localStorage.setItem("email", formData.email);
       console.log("Updated successfully", response.data);
     } catch (e) {
       console.log("Error updating, ", e);
