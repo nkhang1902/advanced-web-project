@@ -24,6 +24,7 @@ export function AppLayout({ children }) {
         {}
       );
       console.log("Log out successfully", response.data);
+      localStorage.setItem("isAuthenticated", "0");
       navigate("/login");
       // Add any additional logic or redirection after successful logout
     } catch (error) {
