@@ -4,7 +4,8 @@ import { Option } from "antd/es/mentions";
 import { AppLayout } from "../AppLayout/AppLayout";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const MOCK_DATA = {
   username: "ducanh",
@@ -13,6 +14,16 @@ const MOCK_DATA = {
 };
 
 const UpdateProfile = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const isAuthenticated = localStorage.getItem("isAuthenticated");
+
+    if(isAuthenticated !== "1") {
+      navigate('/login');
+    }
+  })
+
   const [formData, setFormData] = useState({
     username: MOCK_DATA.username,
     email: MOCK_DATA.email,
