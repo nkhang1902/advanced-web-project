@@ -40,6 +40,8 @@ function SignUpPage() {
          baseUrl + "api/auth/signup",
         formData
       );
+
+      navigate('/login');
       console.log("Account created successfully:", response.data);
       // Add any additional logic or redirection after successful signup
     } catch (error) {
