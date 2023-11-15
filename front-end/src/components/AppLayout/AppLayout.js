@@ -37,11 +37,7 @@ export function AppLayout({ children }) {
     {
       key: "1",
       label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.antgroup.com"
-        >
+        <a target="_blank" rel="noopener noreferrer" href="/edit-profile">
           <EditOutlined></EditOutlined> Edit Profile
         </a>
       ),
