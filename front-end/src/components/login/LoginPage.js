@@ -1,26 +1,12 @@
-import {
-  Button,
-  Checkbox,
-  Col,
-  Divider,
-  Flex,
-  FloatButton,
-  Form,
-  Input,
-  Layout,
-  Row,
-  Space,
-} from "antd";
-import React from "react";
-import { Content } from "antd/es/layout/layout";
-import Sider from "antd/es/layout/Sider";
-import "./LoginPage.css";
 import { ArrowRightOutlined } from "@ant-design/icons";
+import { Button, Checkbox, Flex, Form, Input, Layout } from "antd";
+import Sider from "antd/es/layout/Sider";
+import { Content } from "antd/es/layout/layout";
 import axios from "axios";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-export function LoginPage() {
+import "./LoginPage.css";
+function LoginPage() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -160,3 +146,5 @@ export function LoginPage() {
     </Layout>
   );
 }
+
+export default LoginPage;

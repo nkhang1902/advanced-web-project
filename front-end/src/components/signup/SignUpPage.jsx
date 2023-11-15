@@ -1,12 +1,11 @@
-import React from 'react';
-import {Link, useNavigate} from 'react-router-dom';
-import axios from 'axios';
-import { useState } from 'react';
-import {Button, Checkbox, Flex,  Form, Input, Layout} from "antd";
-import {Content} from "antd/es/layout/layout";
+import { ArrowRightOutlined } from "@ant-design/icons";
+import { Button, Checkbox, Flex, Form, Input, Layout } from "antd";
 import Sider from "antd/es/layout/Sider";
-import "../login/LoginPage.css"
-import {ArrowRightOutlined} from "@ant-design/icons";
+import { Content } from "antd/es/layout/layout";
+import axios from 'axios';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import "../Login/LoginPage.css";
 
 function SignUpPage() {
     const navigate = useNavigate();

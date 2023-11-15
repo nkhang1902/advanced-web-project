@@ -1,16 +1,16 @@
-import { Avatar, Divider, Dropdown, Layout, MenuProps, Row, Space } from "antd";
-import { Footer, Header } from "antd/lib/layout/layout";
-import React from "react";
-import { Content } from "antd/es/layout/layout";
-import "./AppLayout.css";
 import {
   EditOutlined,
   LogoutOutlined,
   SearchOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
+import { Avatar, Divider, Dropdown, Layout, Row, Space } from "antd";
+import { Content } from "antd/es/layout/layout";
+import { Footer, Header } from "antd/lib/layout/layout";
 import axios from "axios";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "./AppLayout.css";
 
 export function AppLayout({ children }) {
   const navigate = useNavigate();
@@ -65,7 +65,7 @@ export function AppLayout({ children }) {
       <Header className={"header"} shadow>
         <Row style={{ minWidth: "100%" }} justify={"space-between"}>
           <Space size={"middle"}>
-            <div className={"logo-header-text"}>Lorem Ipsum</div>
+            <div className={"logo-header-text"}>AWP</div>
             <Divider type={"vertical"} style={{ height: "40px" }} />
             <div className={"search-container"}>
               <SearchOutlined style={{ color: "grey" }} />

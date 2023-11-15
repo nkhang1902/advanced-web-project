@@ -1,5 +1,5 @@
 import React from 'react';
-import {AppLayout} from "../app-layout/AppLayout";
+import {AppLayout} from "../AppLayout/AppLayout";
 
 function HomePage() {
     return (
